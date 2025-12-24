@@ -7,11 +7,11 @@
 
 <p align="left">
   <a href="https://github.com/ryo-ma/github-profile-trophy">
-    <img src="https://github-profile-trophy.vercel.app/?username=ayushrajak19&theme=tokyonight&margin-w=10&margin-h=10" alt="ayushrajak19" />
+    <img src="https://github-profile-trophy.vercel.app/?username=ayushrajak19&theme=tokyonight&margin-w=10&margin-h=10" alt="Priyanshu" />
   </a>
 </p>
 
-- 🔭 I’m currently working on [Hotel Booking Cancellation Project](https://github.com/ayushRajak19/my_proj1)  
+- 🔭 I’m currently working on [Hotel Booking Cancellation Project](https://github.com/Priyansiiuuu/)  
 - 🌱 I’m currently learning **Data Analysis**  
 - 💬 Ask me about **Python, DevOps**  
 - 📫 How to reach me **ppriyam276@gmail.com**
