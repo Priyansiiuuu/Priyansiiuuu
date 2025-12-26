@@ -1,0 +1,185 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyPZioviaVaKK2MSs7f1EAcF",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Priyansiiuuu/Priyansiiuuu/blob/main/LOGISTIC%20REGRESSION\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "##LOGISTIC REGRESSION ##"
+      ],
+      "metadata": {
+        "id": "gB1IS0xYu8Up"
+      }
+    },
+    {
+      "cell_type": "code",
+      "execution_count": 5,
+      "metadata": {
+        "id": "l9Kptf6Qu3jp"
+      },
+      "outputs": [],
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "from sklearn.datasets import load_breast_cancer\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.metrics import confusion_matrix, accuracy_score, classification_report\n",
+        "\n",
+        "from sklearn.linear_model import LogisticRegression\n",
+        "\n"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = load_breast_cancer()\n",
+        "\n",
+        "X = data.data      # Features\n",
+        "y = data.target    # Labels (0 = Malignant, 1 = Benign)\n",
+        "\n",
+        "print(\"Features shape:\", X.shape)\n",
+        "print(\"Target shape:\", y.shape)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "4cVK1qsTvLyD",
+        "outputId": "5f4bfa68-d242-4797-fd3f-55bc1d13774e"
+      },
+      "execution_count": 6,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Features shape: (569, 30)\n",
+            "Target shape: (569,)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "X_train, X_test, y_train, y_test = train_test_split(\n",
+        "    X, y, test_size=0.2, random_state=42\n",
+        ")\n"
+      ],
+      "metadata": {
+        "id": "gJGU3_qqvdtj"
+      },
+      "execution_count": 7,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "log_reg = LogisticRegression(max_iter=5000)\n",
+        "log_reg.fit(X_train, y_train)\n",
+        "\n",
+        "y_pred_log = log_reg.predict(X_test)\n",
+        "\n",
+        "print(\"Logistic Regression Accuracy:\", accuracy_score(y_test, y_pred_log))\n",
+        "print(\"Confusion Matrix:\\n\", confusion_matrix(y_test, y_pred_log))\n",
+        "print(classification_report(y_test, y_pred_log))\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "LrEa-ekCvgCy",
+        "outputId": "36dea730-4f1b-4236-ebc5-5f1834c14712"
+      },
+      "execution_count": 8,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Logistic Regression Accuracy: 0.956140350877193\n",
+            "Confusion Matrix:\n",
+            " [[39  4]\n",
+            " [ 1 70]]\n",
+            "              precision    recall  f1-score   support\n",
+            "\n",
+            "           0       0.97      0.91      0.94        43\n",
+            "           1       0.95      0.99      0.97        71\n",
+            "\n",
+            "    accuracy                           0.96       114\n",
+            "   macro avg       0.96      0.95      0.95       114\n",
+            "weighted avg       0.96      0.96      0.96       114\n",
+            "\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "\n",
+        "new_data = np.array([X[0]])\n",
+        "\n",
+        "print(\"Logistic Regression Prediction:\", log_reg.predict(new_data))\n",
+        "print(\"KNN Prediction:\", knn.predict(new_data))\n",
+        "print(\"Decision Tree Prediction:\", dt.predict(new_data))\n",
+        "\n",
+        "\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/",
+          "height": 228
+        },
+        "id": "52dSlwP6vkzY",
+        "outputId": "86de0c71-1689-484d-9807-80f25efd7a83"
+      },
+      "execution_count": 10,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Logistic Regression Prediction: [0]\n"
+          ]
+        },
+        {
+          "output_type": "error",
+          "ename": "NameError",
+          "evalue": "name 'knn' is not defined",
+          "traceback": [
+            "\u001b[0;31m---------------------------------------------------------------------------\u001b[0m",
+            "\u001b[0;31mNameError\u001b[0m                                 Traceback (most recent call last)",
+            "\u001b[0;32m/tmp/ipython-input-969130539.py\u001b[0m in \u001b[0;36m<cell line: 0>\u001b[0;34m()\u001b[0m\n\u001b[1;32m      2\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      3\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Logistic Regression Prediction:\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mlog_reg\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpredict\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnew_data\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0;32m----> 4\u001b[0;31m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"KNN Prediction:\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mknn\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpredict\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnew_data\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[0m\u001b[1;32m      5\u001b[0m \u001b[0mprint\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0;34m\"Decision Tree Prediction:\"\u001b[0m\u001b[0;34m,\u001b[0m \u001b[0mdt\u001b[0m\u001b[0;34m.\u001b[0m\u001b[0mpredict\u001b[0m\u001b[0;34m(\u001b[0m\u001b[0mnew_data\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m)\u001b[0m\u001b[0;34m\u001b[0m\u001b[0;34m\u001b[0m\u001b[0m\n\u001b[1;32m      6\u001b[0m \u001b[0;34m\u001b[0m\u001b[0m\n",
+            "\u001b[0;31mNameError\u001b[0m: name 'knn' is not defined"
+          ]
+        }
+      ]
+    }
+  ]
+}
