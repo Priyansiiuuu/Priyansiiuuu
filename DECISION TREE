@@ -1,0 +1,116 @@
+{
+  "nbformat": 4,
+  "nbformat_minor": 0,
+  "metadata": {
+    "colab": {
+      "provenance": [],
+      "authorship_tag": "ABX9TyO1quSEx+dUU0AIMC9tG79r",
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "name": "python3",
+      "display_name": "Python 3"
+    },
+    "language_info": {
+      "name": "python"
+    }
+  },
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/Priyansiiuuu/Priyansiiuuu/blob/main/DECISION%20TREE\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "markdown",
+      "source": [
+        "## DECISION TREE ##\n"
+      ],
+      "metadata": {
+        "id": "BkyvxfVOv_H8"
+      }
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "import numpy as np\n",
+        "import pandas as pd\n",
+        "\n",
+        "from sklearn.datasets import load_breast_cancer\n",
+        "from sklearn.model_selection import train_test_split\n",
+        "from sklearn.metrics import confusion_matrix, accuracy_score, classification_report\n",
+        "from sklearn.tree import DecisionTreeClassifier\n"
+      ],
+      "metadata": {
+        "id": "siO896tQwFkA"
+      },
+      "execution_count": 1,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "data = load_breast_cancer()\n",
+        "\n",
+        "X = data.data      # Features\n",
+        "y = data.target    # Labels (0 = Malignant, 1 = Benign)\n",
+        "\n",
+        "print(\"Features shape:\", X.shape)\n",
+        "print(\"Target shape:\", y.shape)\n"
+      ],
+      "metadata": {
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        },
+        "id": "AiEAeMAmwXpp",
+        "outputId": "d83695c0-a8a0-43c5-d1ad-95811db555ca"
+      },
+      "execution_count": 2,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "Features shape: (569, 30)\n",
+            "Target shape: (569,)\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "X_train, X_test, y_train, y_test = train_test_split(\n",
+        "    X, y, test_size=0.2, random_state=42\n",
+        ")\n"
+      ],
+      "metadata": {
+        "id": "4pK-uc-RwbKI"
+      },
+      "execution_count": 3,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "dt = DecisionTreeClassifier(random_state=42)\n",
+        "dt.fit(X_train, y_train)\n",
+        "\n",
+        "y_pred_dt = dt.predict(X_test)\n",
+        "\n",
+        "print(\"Decision Tree Accuracy:\", accuracy_score(y_test, y_pred_dt))\n",
+        "print(\"Confusion Matrix:\\n\", confusion_matrix(y_test, y_pred_dt))\n"
+      ],
+      "metadata": {
+        "id": "v15Cos9ywdJv"
+      },
+      "execution_count": null,
+      "outputs": []
+    }
+  ]
+}
